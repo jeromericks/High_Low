@@ -23,6 +23,4 @@ do {
 
 } while ($random != $guess);
 
-
-
 ?>
