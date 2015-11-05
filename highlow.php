@@ -1,12 +1,30 @@
 <?php
 
+$min = 1;
+$max = 100;
+
+if ($argc == 3) {
+	if (is_numeric($argv[1]) && is_numeric($argv[2])) {
+		if($argv[1] > $argv[2]) {
+			$min = $argv[2];
+			$max = $argv[1];
+		} else {
+			$min = $argv[1];
+			$max = $argv[2];
+		}
+	} else {
+		die("Please enter a valid argument" .PHP_EOL);
+	}
+
+}
+
 $counter = 0;
-$random = mt_rand(1, 100);
+$random = mt_rand($min, $max);
 fwrite(STDOUT, 'Guess? ' . PHP_EOL);
 
 do {
 	$guess = trim(fgets(STDIN));
-	if($guess >= 1 && $guess <= 100) {
+	if($guess >= $min && $guess <= $max) {
 		$counter++;
 	}
 	if(!is_numeric($guess)) {
